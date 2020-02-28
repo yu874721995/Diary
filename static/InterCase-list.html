@@ -180,14 +180,21 @@ function member_del(obj, id) {
                         body.find('#Commodity_details').val(data.Commodity_details);
                         body.find('#Commodity_money').val(data.Commodity_money);
                         body.find('#detail').html(data.Commodity_details)
-                        $.post(hostUrl + '/queryForProduct', {}, function (data) {
-                            var _html, json_data;
-                            json_data = JSON.parse(data).data
-                            for (var i = 0; i < json_data.length; i++) {
-                                _html += "<option value='" + json_data[i].id + "'>" + json_data[i].name + "</option>"
-                            }
-                            body.find('#cpChoice').append(_html);
-                        })
+                        var com_pic = data.com_pic
+                        for (var i = 0; i < com_pic.length; i++) {
+
+                            body.find('#url').val(body.find('#url').val() + com_pic[i] + ';');
+
+                            body.find('#ImgPreview').append('<div class="image-container" style="display:inline-block;" id="container' + i + '"><div class="delete-css"><button type="button" id="upload_img_' + i + '" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>\n' +
+                                '<img id="showImg' + i + '" style="width: 120px; margin:10px;cursor:pointer;" src="' + com_pic[i] + '" alt="" ></div>')
+
+                            body.find("#upload_img_" + i).bind('click', function () {
+                                body.find("#container" + (i - 1)).remove();
+
+                            });
+                        }
+                        ;
+
                     }
                     , end: function (data) {
                         // window.location.reload()
