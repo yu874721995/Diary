@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3f51e567-cfae-46ce-a474-bea3a0e7a595" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Diary/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Diary/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/InterCase-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/InterCase-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/caseupdate.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/caseupdate.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/caseList.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/caseList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/xcx/api/user_CreateTestCase.py" beforeDir="false" afterPath="$PROJECT_DIR$/xcx/api/user_CreateTestCase.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/jss/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/jss/config.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/caseupdate.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="456">
@@ -29,6 +25,15 @@
                 <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/jss/config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="114">
+              <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -151,7 +156,6 @@
         <option value="$PROJECT_DIR$/xcx/api/req_Debug.py" />
         <option value="$PROJECT_DIR$/xcx/api/updateUser.py" />
         <option value="$PROJECT_DIR$/xcx/api/wechat.py" />
-        <option value="$PROJECT_DIR$/static/jss/config.js" />
         <option value="$PROJECT_DIR$/static/jss/index.js" />
         <option value="$PROJECT_DIR$/templates/login.html" />
         <option value="$PROJECT_DIR$/xcx/api/login.py" />
@@ -172,6 +176,7 @@
         <option value="$PROJECT_DIR$/static/InterCase-list.html" />
         <option value="$PROJECT_DIR$/static/js/caseList.js" />
         <option value="$PROJECT_DIR$/static/caseupdate.html" />
+        <option value="$PROJECT_DIR$/static/jss/config.js" />
       </list>
     </option>
   </component>
@@ -198,6 +203,17 @@
               <item name="Diary" type="b2602c69:ProjectViewProjectNode" />
               <item name="Diary" type="462c0819:PsiDirectoryNode" />
               <item name="Diary" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Diary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diary" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Diary" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Diary" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="jss" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -272,12 +288,12 @@
       <workItem from="1582686422445" duration="22302000" />
       <workItem from="1582767509145" duration="15163000" />
       <workItem from="1582857773059" duration="21254000" />
-      <workItem from="1583122860222" duration="4264000" />
+      <workItem from="1583122860222" duration="4968000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="62983000" />
+    <option name="totallyTimeSpent" value="63687000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -467,13 +483,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/jss/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
@@ -684,6 +693,13 @@
             <element signature="n#style#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#div#0;n#div#1;n#form#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/jss/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
         </state>
       </provider>
     </entry>
