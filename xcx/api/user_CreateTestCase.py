@@ -83,5 +83,18 @@ class user_testCase():
         return HttpResponse(json.dumps({'status':1,'msg':'操作成功'}))
 
 
+    def delCom(self,request):
+        com_id = request.POST.get('com_id',None)
+        status = request.POST.get('status',None)
+        print(com_id,status)
+        if com_id is None or status is None:
+            return HttpResponse(json.dumps({'status':500,'msg':'参数错误'}))
+        try:
+            models.Commodity.objects.filter(id=com_id).update(status=status)
+            return HttpResponse(json.dumps({'status': 1, 'msg': '操作成功'}))
+        except Exception as e:
+            return HttpResponse(json.dumps({'status':10086,'msg':e}))
+
+
 
 

@@ -63,9 +63,6 @@
                     <button class="layui-btn" onclick=openAdd()>
                         <i class="layui-icon"></i>添加
                     </button>
-                    <button class="layui-btn layui-btn-danger" onclick=batchExecution()>
-                        <i class="layui-icon"></i>批量执行
-                    </button>
                 </div>
 
                 <div class="layui-card-body ">
@@ -105,17 +102,6 @@
         });
     });
 
-/*用例-禁用*/
-function member_del(obj, id) {
-    alert(obj, id)
-    layer.confirm('确认要下架吗？',
-        function (index) {
-            layer.msg('已禁用!', {
-                icon: 1,
-                time: 1000
-            });
-        });
-}
 </script>
 
 <script type="text/javascript" src="./js/wangEditor-3.1.1/release/wangEditor.min.js"></script>
@@ -180,6 +166,8 @@ function member_del(obj, id) {
                         body.find('#Commodity_details').val(data.Commodity_details);
                         body.find('#Commodity_money').val(data.Commodity_money);
                         body.find('#detail').html(data.Commodity_details)
+                        body.find('#cpChoice').find("option[value='5/6']").attr("selected", true)
+                        s = body.find('#cpChoice').val()
                         var com_pic = data.com_pic
                         for (var i = 0; i < com_pic.length; i++) {
 
@@ -200,7 +188,38 @@ function member_del(obj, id) {
                         // window.location.reload()
                     }
                 })
-            } else {
+            } else if (obj.event == 'del') {
+                var req = {
+                    com_id: data.com_id,
+                    status: 0
+                }
+                $.post(hostUrl + '/delCom', req, function (arc) {
+                    var json_data = JSON.parse(arc);
+                    if (json_data.status == '1') {
+
+                        layer.msg(json_data.msg,{icon:1,time:2000},function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(json_data.msg)
+                    }
+                })
+            } else if (obj.event == 'Nodel') {
+                var req = {
+                    com_id: data.com_id,
+                    status: 1
+                }
+                $.post(hostUrl + '/delCom', req, function (arc) {
+                    var json_data = JSON.parse(arc);
+                    if (json_data.status == '1') {
+
+                        layer.msg(json_data.msg,{icon:1,time:2000},function () {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(json_data.msg)
+                    }
+                })
             }
             ;
         })
@@ -212,7 +231,7 @@ function member_del(obj, id) {
     {{#  if(d.status == 1){ }}
     <a class="layui-btn layui-btn-xs" lay-event="del" title="下架" href="javascript:;">下架</a>
     {{#  } else{ }}
-    <a class="layui-btn layui-btn-xs" lay-event="Nodel" title="下架" href="javascript:;">上架</a>
+    <a class="layui-btn layui-btn-xs" lay-event="Nodel" title="上架" href="javascript:;">上架</a>
     {{#  } }}
     <a class="layui-btn layui-btn-xs" lay-event="detail" title="查看详情" href="javascript:;">查看详情</a>
 </script>

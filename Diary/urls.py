@@ -40,7 +40,7 @@ urlpatterns = [
     re_path('UserHistory', users().userHistory),
     re_path(r'^accounts/login/$',indexviews.login),
     re_path('SaveCommodity',SaveCase().SaveCommodity),
-    re_path('deleteHistory',indexviews.deleteHistory),
+    re_path('delCom',SaveCase().delCom),
     re_path('userList',users().userList),
     re_path('updateUserStatus',user().updateUserStatus),
     re_path('addUser',users().add_User),
