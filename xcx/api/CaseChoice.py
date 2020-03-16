@@ -227,3 +227,38 @@ class caseChoice():
             case_data['case_assert'] = case_asserts
             data.append(case_data)
         return data
+
+
+    def bannerList(self,request):
+        user_id = request.session.get('user_id', None)
+        page = request.POST.get('page', None)
+        limit = request.POST.get('limit', None)
+        fy = self.pages(page, limit)
+        if user_id == None:
+            return HttpResponse(json.dumps({'status': 100, 'msg': '登录过期'}))
+        banner = models.Commodity_banner.objects.all().values()
+        count = models.Commodity_banner.objects.all().count()
+        data = []
+
+        # 处理商品数据
+        num = 0
+        for i in banner:
+            num += 1
+            if num < fy[0]:
+                continue
+            if num > fy[1]:
+                break
+            banner_data = {}
+            banner_data['id'] = i['id']
+            banner_data['status'] = i['status']
+            banner_data['banner_name'] = i['banner_name']
+            banner_data['banner_path'] = i['banner_path']
+            banner_data['create_time'] = i['create_time']
+            banner_data['banner_pic_path'] = i['banner_pic_path']
+            banner_data['banner_detail'] = i['banner_detail']
+            username = models.web_UserInfo.objects.filter(id=i['user_id']).values()[0]['username']
+            banner_data['username'] = username
+            data.append(banner_data)
+        return HttpResponse(
+            json.dumps({'code': 0, 'count': count, 'data': data, 'msg': '操作成功', 'status': 1}, cls=DateEncoder))
+

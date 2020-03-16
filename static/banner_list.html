@@ -60,7 +60,7 @@
                     </form>
                 </div>
                 <div class="layui-card-header">
-                    <button class="layui-btn" onclick=openAdd('com')>
+                    <button class="layui-btn" onclick=openAdd('banner')>
                         <i class="layui-icon"></i>添加
                     </button>
                 </div>
@@ -115,32 +115,38 @@
             , id: 'myTable'
             , height: 473
             , method: 'POST'
-            , url: hostUrl + '/comList' //数据接口
+            , url: hostUrl + '/bannerList' //数据接口
             , page: true //开启分页
             , cols: [[ //表头
                 {fixed: 'left', type: 'checkbox', title: '', width: '5%'}
                 , {
-                    field: 'com_id', title: '商品编号', width: '7%', sort: true, templet: function (d) {
-                        return '2020' + d.com_id
+                    field: 'id', title: '活动编号', width: '10%', sort: true, templet: function (d) {
+                        return d.id
                     }
                 }
-                , {field: 'Commodity_name', title: '商品名称', width: '15%'}
+                , {field: 'banner_name', title: '活动名称', width: '20%'}
                 , {
-                    field: 'status', title: '商品状态', width: '5%', sort: true, templet: function (d) {
+                    field: 'status', title: '活动状态', width: '10%', sort: true, templet: function (d) {
                         if (d.status == 1) {
-                            return '上架'
+                            return '启用'
                         } else {
-                            return '下架'
+                            return '禁用'
                         }
                     }
                 }
-                , {field: 'Comodity_Specifications', title: '规格', width: '5%'}
-                , {field: 'Commodity_Company', title: '单位', width: '5%', sort: true}
-                , {field: 'Commodity_money', title: '价格', sort: true, width: '7%'}
-                , {field: 'subjection_cp', title: '隶属大类', width: '10%', sort: true}
-                , {field: 'subjection_mk', title: '隶属模块', width: '10%', sort: true}
-                , {field: 'username', title: '创建人', sort: true, width: '5%'}
-                , {field: 'create_time', title: '创建时间', width: '12%', sort: true}
+                , {
+                    field: 'banner_path', title: '活动展示位置', width: '15%', sort: true, templet: function (d) {
+                        if (d.banner_path == 1) {
+                            return '首页顶部滑动'
+                        } else if (d.banner_path == 2) {
+                            return '首页中段主题'
+                        } else {
+                            return '分类顶部banner'
+                        }
+                    }
+                }
+                , {field: 'username', title: '创建人', sort: true, width: '10%'}
+                , {field: 'create_time', title: '创建时间', width: '15%', sort: true}
                 , {fixed: 'right', width: '15%', align: 'center', toolbar: '#barDemo', title: '操作'}
             ]]
         });
@@ -149,40 +155,32 @@
             if (obj.event == 'edit') {
                 parent.layer.open({
                     type: 2
-                    , title: '添加商品'
-                    , content: './static/caseupdate.html'
+                    , title: '添加活动'
+                    , content: './static/bannerupdate.html'
                     , skin: 'layui-layer-lan'
                     , area: ['1000px', '600px']
                     , btnAlign: 'c'
                     , maxmin: true
                     , shadeClose: true
                     , success: function (layero, index) {
-                        var body = parent.layer.getChildFrame('body', index);
-                        console.log(data);
-                        body.find('#Commodity_name').val(data.Commodity_name);
-                        body.find('#Comodity_introduction').val(data.Comodity_introduction);
-                        body.find('#Commodity_Company').val(data.Commodity_Company);
-                        body.find('#Comodity_Specifications').val(data.Comodity_Specifications);
-                        body.find('#Commodity_details').val(data.Commodity_details);
-                        body.find('#Commodity_money').val(data.Commodity_money);
-                        body.find('#detail').html(data.Commodity_details)
-                        body.find('#cpChoice').find("option[value='5/6']").attr("selected", true)
-                        s = body.find('#cpChoice').val()
-                        var com_pic = data.com_pic
-                        for (var i = 0; i < com_pic.length; i++) {
-
-                            body.find('#url').val(body.find('#url').val() + com_pic[i] + ';');
-
-                            body.find('#ImgPreview').append('<div class="image-container" style="display:inline-block;" id="container' + i + '"><div class="delete-css"><button type="button" id="upload_img_' + i + '" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>\n' +
-                                '<img id="showImg' + i + '" style="width: 120px; margin:10px;cursor:pointer;" src="' + com_pic[i] + '" alt="" ></div>')
-
-                            body.find("#upload_img_" + i).bind('click', function () {
-                                body.find("#container" + (i - 1)).remove();
-
+                        layui.use('form', function () {
+                            var form = layui.form;
+                            form.val("formTest", {
+                                "banner_path": '2'
                             });
-                        }
-                        ;
-
+                        });
+                        var body = parent.layer.getChildFrame('body', index);
+                        body.find('#banner_name').val(data.banner_name);
+                        var select1 = 'dd[lay-value=' + data.banner_path + ']';
+                        body.find('#banner_path').siblings("div.layui-form-select").find('dl').find(select1).click();
+                        body.find('#detail').html(data.banner_detail);
+                        var com_pic = data.banner_pic_path;
+                        body.find('#url').val(body.find('#url').val() + com_pic);
+                        body.find('#ImgPreview').append('<div class="image-container" style="display:inline-block;" id="container0"><div class="delete-css"><button type="button" id="upload_img_0" class="layui-btn layui-btn-danger layui-btn-xs">删除</button></div>\n' +
+                            '<img id="showImg0" style="width: 120px; margin:10px;cursor:pointer;" src="' + com_pic + '" alt="" ></div>')
+                        body.find("#upload_img_0").bind('click', function () {
+                            body.find("#container0").remove();
+                        });
                     }
                     , end: function (data) {
                         // window.location.reload()
@@ -190,14 +188,14 @@
                 })
             } else if (obj.event == 'del') {
                 var req = {
-                    com_id: data.com_id,
+                    id: data.id,
                     status: 0
                 }
-                $.post(hostUrl + '/delCom', req, function (arc) {
+                $.post(hostUrl + '/editbanner', req, function (arc) {
                     var json_data = JSON.parse(arc);
                     if (json_data.status == '1') {
 
-                        layer.msg(json_data.msg,{icon:1,time:2000},function () {
+                        layer.msg(json_data.msg, {icon: 1, time: 1000}, function () {
                             window.location.reload();
                         });
                     } else {
@@ -206,14 +204,14 @@
                 })
             } else if (obj.event == 'Nodel') {
                 var req = {
-                    com_id: data.com_id,
+                    id: data.id,
                     status: 1
                 }
-                $.post(hostUrl + '/delCom', req, function (arc) {
+                $.post(hostUrl + '/editbanner', req, function (arc) {
                     var json_data = JSON.parse(arc);
                     if (json_data.status == '1') {
 
-                        layer.msg(json_data.msg,{icon:1,time:2000},function () {
+                        layer.msg(json_data.msg, {icon: 1, time: 1000}, function () {
                             window.location.reload();
                         });
                     } else {
@@ -229,9 +227,9 @@
 <script type="text/html" id="barDemo">
     <a class="layui-btn layui-btn-xs" lay-event="edit" title="编辑" href="javascript:;">编辑</a>
     {{#  if(d.status == 1){ }}
-    <a class="layui-btn layui-btn-xs" lay-event="del" title="下架" href="javascript:;">下架</a>
+    <a class="layui-btn layui-btn-xs" lay-event="del" title="禁用" href="javascript:;">下架</a>
     {{#  } else{ }}
-    <a class="layui-btn layui-btn-xs" lay-event="Nodel" title="上架" href="javascript:;">上架</a>
+    <a class="layui-btn layui-btn-xs" lay-event="Nodel" title="启用" href="javascript:;">上架</a>
     {{#  } }}
     <a class="layui-btn layui-btn-xs" lay-event="detail" title="查看详情" href="javascript:;">查看详情</a>
 </script>

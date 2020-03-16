@@ -29,6 +29,7 @@ class login_and_reg():
         nikeName = request.POST.get('nikeName',None)
         openId = request.POST.get('openId',None)
         sex = request.POST.get('sex',None)
+        telphone = request.POST.get('telphone',None)
         headimg = request.POST.get('headImg',None)
         print(request.POST)
         if nikeName == None or openId == None or sex == None or headimg ==None or nikeName == '' or openId == '' or sex == '' or headimg == '':
@@ -39,6 +40,9 @@ class login_and_reg():
             for item in query:
                 data = item['id']
             models.UserInfo.objects.filter(wxopenid=openId).update(old_login_time=datetime.datetime.today())
+            request.session['user_id'] = data
+            request.session['is_login'] = True
+            request.session.set_expiry(30 * 60 * 24)
             return HttpResponse(json.dumps({'status':1,'data':data}))
         elif len(query) == 0:
             dic = {

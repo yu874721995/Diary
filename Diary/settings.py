@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['*']
 
 
 IMAGE_SIZE_LIMIT = 10*1024*1024
-WEB_HOST_NAME = 'http://127.0.0.1:8001'
+WEB_HOST_NAME = 'http://127.0.0.1:9001'
 WEB_IMAGE_SERVER_PATH = '/static/images/'
 IMAGE_SAVING_PATH = os.path.abspath(os.getcwd())+'/static/images/'
 
@@ -140,7 +140,7 @@ DATABASES = {
         'PASSWORD': '123456',      #密码
         'HOST': '127.0.0.1',    #IP
         'PORT': '3306',
-        'OPTIONS': { 'init_command': 'SET default_storage_engine=INNODB,character_set_connection=utf8,collation_connection=utf8_unicode_ci;' }
+        'OPTIONS': { 'init_command': 'SET default_storage_engine=INNODB,character_set_connection=UTF8MB4,collation_connection=utf8mb4_unicode_ci;' }
     }
 }
 

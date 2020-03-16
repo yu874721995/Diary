@@ -21,10 +21,16 @@ function batchExecution() {
 }
 
 function openAdd(i) {
+    var path = '';
+    if (i == 'com') {
+        var path = './static/caseupdate.html'
+    } else if (i == 'banner') {
+        var path = './static/bannerupdate.html'
+    };
     parent.layer.open({
         type: 2
         , title: '添加商品'
-        , content: './static/caseupdate.html'
+        , content: path
         , skin: 'layui-layer-lan'
         , area: ['1000px', '600px']
         , btnAlign: 'c'

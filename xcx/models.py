@@ -43,9 +43,35 @@ class Commodity(models.Model):#商品表
     Commodity_Company = models.CharField(max_length=20,verbose_name='商品计量单位')
     Commodity_money = models.CharField(max_length=20,verbose_name='商品价格')
     Commodity_details = models.TextField(max_length=2000,verbose_name='商品详情')
+    commodity_num = models.IntegerField(default=0)
     user_id = models.CharField(max_length=20,verbose_name='创建人',default=None)
     create_time = models.DateTimeField(default=timezone.now)
-    old_login_time = models.DateTimeField(default=timezone.now)
+    old_update_time = models.DateTimeField(default=timezone.now)
+
+#订单大表
+class Commodity_order(models.Model):
+    id = models.AutoField(primary_key=True, blank=False, verbose_name='id')
+    status = models.CharField(max_length=20, default=1, verbose_name='是否生效 1是 0否')  # 是否禁用
+    order_id = models.CharField(max_length=20, verbose_name='订单ID')
+    Commodity_money = models.CharField(max_length=20, verbose_name='订单总价')
+    user_id = models.CharField(max_length=20, verbose_name='购买人', default=None)
+    create_time = models.DateTimeField(default=timezone.now)
+    pay_status = models.CharField(max_length=20, default=0, verbose_name='是否支付 1是 0否')
+    pay_time = models.DateTimeField(default=None,blank=False,null=True)
+    old_update_time = models.DateTimeField(auto_now=timezone.now)
+
+#订单小表
+class Commodity_order_pr(models.Model):
+    id = models.AutoField(primary_key=True, blank=False, verbose_name='id')
+    order_id = models.CharField(max_length=20, verbose_name='大单ID')
+    Commodity_id = models.CharField(max_length=20, verbose_name='商品id')
+    Commodity_name = models.CharField(max_length=20, verbose_name='商品名称')
+    Comodity_num = models.IntegerField(default=1,verbose_name='购买数量')
+    Commodity_money = models.CharField(max_length=20, verbose_name='订单价格')
+    user_id = models.CharField(max_length=20, verbose_name='购买人', default=None)
+    create_time = models.DateTimeField(default=timezone.now)
+    old_update_time = models.DateTimeField(auto_now=timezone.now)
+
 
 class Commodity_pic(models.Model):  # 商品图片表
     class Meta:
@@ -58,17 +84,26 @@ class Commodity_pic(models.Model):  # 商品图片表
     pic_path = models.CharField(max_length=200, verbose_name='商品图片路径')
     create_time = models.DateTimeField(default=timezone.now)
 
-
-
-
-
-
-
+#活动
 class Commodity_banner(models.Model):
     id = models.AutoField(primary_key=True, blank=False, verbose_name='记录id')
     status = models.CharField(max_length=20, default=1, verbose_name='是否禁用 1用 0禁')  # 是否禁用
     banner_path = models.CharField(max_length=20, default=1)# banner位置
     banner_pic_path = models.CharField(max_length=200,verbose_name='banner图片路径')
+    banner_name = models.CharField(max_length=20,default='',verbose_name='bannername')
+    banner_detail = models.TextField(max_length=2000,default='',verbose_name='活动详情')
+    user_id = models.CharField(max_length=20, default='',verbose_name='创建人')
+    create_time = models.DateTimeField(default=timezone.now)
+
+#购物车
+class comCar(models.Model):
+    id = models.AutoField(primary_key=True, blank=False, verbose_name='记录id')
+    status = models.CharField(max_length=20, default=1, verbose_name='是否禁用 1用 0禁')  # 是否禁用
+    user_id = models.CharField(max_length=20, default='', verbose_name='创建人')
+    Commodity_id = models.CharField(max_length=20, verbose_name='商品id')
+    Commodity_num = models.IntegerField(default=1,verbose_name='购买数量')
+    Commodity_money = models.CharField(max_length=20, verbose_name='订单价格')
+
 
 #类型
 class Comcp_mk(models.Model):
