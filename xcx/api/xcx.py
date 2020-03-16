@@ -12,6 +12,7 @@ from django.http import HttpResponse
 from random import randint
 from xcx import models
 import json, time
+import logging
 import requests
 from django.shortcuts import render
 from wechat_sdk import WechatBasic
@@ -20,6 +21,7 @@ import re
 from django.db import connection
 from xcx.models import Commodity_banner
 
+logger = logging.getLogger('log')
 
 class xcx():
 
@@ -185,6 +187,7 @@ class xcx():
         # if user_id is None:
         #     return HttpResponse(json.dumps({'status': 300, 'msg': '请登录'}))
         query = models.comCar.objects.filter(status=1,user_id=user_id).values()
+        logger.info(query.query)
 
         data = []
         for i in query:
