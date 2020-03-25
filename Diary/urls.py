@@ -34,7 +34,6 @@ urlpatterns = [
     re_path('index', indexviews.index),
     re_path('login', indexviews.login),
     re_path('Loginup', login().Loginup),
-    re_path('goRegister', indexviews.goRegister),
     re_path('register', indexviews.register),
     re_path('reqJson', req().reqJson),
     re_path('username', users().getuser),
@@ -57,13 +56,13 @@ urlpatterns = [
     re_path('getUserInfo', xcx_login().getUserInfo),
     re_path('uploadImage', uploadimg.uploadImage),
     re_path('Savebanner', SaveCase().Savebanner),
-re_path('bannerList', case().bannerList),
-re_path('editbanner', SaveCase().editbanner),
-re_path('xcxIndex', xcx().xcxIndex),
-    re_path('xcxComList',xcx().xcxComList),
-    re_path('createOrder',xcx().createOrder),
-    re_path('addComCar',xcx().addComCar),
-    re_path('delCar',xcx().delComCar),
-    re_path('ComCar',xcx().ComCar)
+    re_path('bannerList', case().bannerList),
+    re_path('editbanner', SaveCase().editbanner),
+    re_path('xcxIndex', xcx().xcxIndex),
+    re_path('xcxComList', xcx().xcxComList),
+    re_path('createOrder', xcx().createOrder),
+    re_path('addComCar', xcx().addComCar),
+    re_path('delCar', xcx().delComCar),
+    re_path('ComCar', xcx().ComCar)
 
 ]

@@ -21,8 +21,6 @@ def index(request):
         return render(request, 'login.html')
     return render(request,'index.html')
 
-def goRegister(request):
-    return render(request,'register.html')
 
 
 def register(request):
@@ -45,17 +43,6 @@ def register(request):
         except Exception as e:
             return HttpResponse(json.dumps({'status': 3,
                                             'msg': '注册失败'}))
-
-def deleteHistory(request):
-    user_id = request.session.get('user_id', None)
-    if user_id is None or user_id == '1':
-        return HttpResponse(json.dumps({'status': 200, 'msg': '登录超时'}))
-    case_id = request.POST.get('caseId',None)
-    models.user_body.objects.filter(host_id_id=case_id).update(status=0)
-    models.user_host.objects.filter(id=case_id).update(status=0)
-    return HttpResponse(json.dumps({'status':1,'msg':'操作成功'}))
-
-
 
 def x1231():
     #查询
