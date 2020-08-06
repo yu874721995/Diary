@@ -96,11 +96,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3f51e567-cfae-46ce-a474-bea3a0e7a595" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Diary.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Diary.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/banner_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/banner_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/jss/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/jss/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Diary/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Diary/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +144,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../onesPro" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -268,8 +265,13 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="770" y="276" key="FileChooserDialogImpl" timestamp="1595380884419">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="770" y="276" key="FileChooserDialogImpl/0.0.1920.1050@0.0.1920.1050" timestamp="1595380884419" />
     <state x="340" y="163" key="SettingsEditor" timestamp="1595321160362">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
